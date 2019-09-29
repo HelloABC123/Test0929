@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "22b0bd29-1dbb-43d9-b1ab-e96b6dd9753c",
+		"name": "登陆测试",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f3ad83a-9be0-488c-a361-9ac7bbc0f542",
+						"exec": [
+							"var jsondata = pm.response.json()",
+							"token= jsondata.data",
+							"//pm.globals.set(\"login\",\"Bearer \"+token);",
+							"pm.environment.set(\"login\",\"Bearer \"+token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "{{url}}/api/sys/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登陆失败--用户名错误",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000666\", \r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "{{url}}/api/sys/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登陆失败--用户名为空",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"\", \r\n\"password\":\"123456\"}"
+				},
+				"url": {
+					"raw": "{{url}}/api/sys/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登陆失败--密码错误",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"error\"}"
+				},
+				"url": {
+					"raw": "{{url}}/api/sys/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登陆错误--密码为空",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"mobile\":\"13800000002\", \r\n\"password\":\"\"}"
+				},
+				"url": {
+					"raw": "{{url}}/api/sys/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登陆失败--请求参数为空",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/sys/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"sys",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
